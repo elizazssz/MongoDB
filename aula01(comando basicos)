@@ -1,0 +1,47 @@
+db.produtos.insertOne({
+ _id: 1,
+ nomeProduto: "Leite Longa Vida",
+ descricaoProduto: "Embalagem 1 Litro",
+ dataValidade: new Date("2024-06-30"),
+ tipo: "Laticínio",
+ precoCompra: 2.75,
+ precoVenda: 4.88
+});
+
+db.produtos.insertMany([
+ {
+ _id: 2,
+ nomeProduto: "Bom Bril",
+ descricaoProduto: "Palha de aço de uso doméstico",
+ dataValidade: null,
+ tipo: "Palha de aço",
+ precoCompra: 5,
+ precoVenda: 7.5
+ },
+ {
+ _id: 3,
+ nomeProduto: "Smart TV LG",
+ descricaoProduto: "UHD 4K 60pol.",
+ dataValidade: null,
+ tipo: "Eletronico",
+ precoCompra: 2500,
+ precoVenda: null
+ }
+]);
+
+//deletar produto
+db.produtos.deleteOne({ _id: 1 });
+
+//atualizar nome do produto
+db.produtos.updateOne(
+ { _id: 2 },
+ { $set: { nomeProduto: "Palha de aço bombril" } }
+);
+
+//atualizar descrição do produto
+db.produtos.updateOne(
+ { _id: 3 },
+ { $set: { descricaoProduto: "Imagem 4K", precoCompra: 6.89 } }
+);
+
+
