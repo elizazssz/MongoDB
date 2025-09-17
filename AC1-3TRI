@@ -1,0 +1,119 @@
+use viagens
+	
+	db.destino.insertOne({
+	_id: 1,
+	destino: "Paris",
+	atrações: ["Torre Eiffel"],
+	preçoMedioDiario: 150,
+	avaliação: 4.8
+	});
+	
+	db.pacotes.insertOne({
+	_id: 2,
+	pacote: "Aventura na Amazonia",
+	duraçãoDias: 7,
+	preço: 1200, 
+	inclui: "transporte"
+	});
+	
+	db.avaliações.insertOne({
+	_id: 3,
+	destino: "Toquio",
+	avaliação: [5],
+	comentario: "incrivel experiencia cultural"
+	});
+	
+	
+	db.clientes.insertOne({
+	_id: 4,
+	nome: "João Silva",
+	email: "joao.silva@example.com",
+	destino: ["Nova York"]
+	});
+	
+	db.reservas.insertOne({
+	_id: 5, 
+	reservaCliente: "Maria Santos",
+	destino: "Bali",
+	dataPartida: "2024-07-15",
+	dataRetorno: "2024-07-25",
+	status: "Negado"
+	});
+	
+	db.destino.updateOne(
+	  {destino: "Paris"},
+	  {$mul:{preçoMedioDiario: 1.10}});
+	  
+	  
+	db.destino.updateOne(
+	  {_id: 1},
+	  {$set: {avaliação: 4.9}}
+	);
+	
+	
+	db.pacotes.updateOne(
+	  {_id: 2},
+	  {$inc: {duraçãoDias: 3}}
+	);
+	
+	db.pacotes.updateOne(
+  {pacote: "Aventura na Amazonia", preço: 1200},
+  {$mul: {preço: 0.85}}
+	)
+	
+	
+		db.destino.updateOne(
+	  {_id: 1},
+	  {$inc: {avaliação: 1}}
+	)
+	
+	db.clientes.updateOne(
+	  {email: "joao.silva@example.com" },
+	  {$set: {email: "novo.email@examplo.com"}}
+	)
+
+
+	db.destino.updateOne(
+	  { destino: "Paris"},
+	  {$push: { atrações: "Arco do Triunfo"}}
+	)
+
+
+	db.reservas.updateOne(
+	  {_id: 5},
+	  {$set: { status: "Confirmada"}}
+	)
+	
+	db.clientes.updateOne(
+	  {_id: 4},
+	  {$push: { destino: "Tóquio"} }
+	)
+
+
+
+	db.pacotes.updateOne(
+	  {_id: 2},
+	  {$set: {pacote: "Aventura na Floresta Amazonia"}}
+	)
+
+
+	db.destino.deleteOne({destino: "Paris"});
+
+
+	db.avaliações.updateOne(
+	  { destino: "Toquio" },
+	  { $pull: { avaliação: 3 } }
+	);
+	
+	
+	db.reservas.deleteOne({ status: "Negado" });
+
+
+	db.destinos.updateOne(
+	  { nome: "Paris" },
+	  { $pull: { atracoes: "Torre Eiffel" } }
+	);
+	
+	
+	db.clientes.deleteOne({nome: "João Silva"});
+
