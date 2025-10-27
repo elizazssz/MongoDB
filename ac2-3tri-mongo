@@ -52,3 +52,24 @@ db.jogos.find({},{titulo: 1})
 
 db.jogos.find({},{_id: 0, titulo: 1, desenvolvedora: 1})
 
+db.jogos.find({ genero: "Aventura" }, {_id: 1, titulo: 1})
+
+db.jogos.find({ plataformas: "PlayStation 4" })
+
+db.jogos.find({ plataformas: { $size: 3 } }, {_id: 1, titulo: 1} )
+
+
+db.jogos.updateOne(
+  { _id: 4 },
+  { $push: { plataformas: "PlayStation" } }
+)
+db.jogos.find({ _id: 4 })
+
+
+db.jogos.updateOne(
+  { _id: 1 },
+  { $addToSet: { genero: "Ação" } }
+)
+db.jogos.find({ _id: 1 })
+
+
