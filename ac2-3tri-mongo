@@ -1,0 +1,54 @@
+use ac2
+
+db.jogos.insertMany([
+  {
+    _id: 1,
+    titulo: 'The Last Of Us',
+    desenvolvedora: 'Naughty Dog',
+    genero: ['Terror', 'Aventura'],
+    plataformas: ['PlayStation 4', 'PlayStation 3'],
+    avaliacoes: [4.5, 3.6, 5.0],
+    DLC: [
+      { nome: 'Left Behind', preco: 69.99 }
+    ]
+  },
+  {
+    _id: 2,
+    titulo: 'GTA 5',
+    desenvolvedora: 'Rockstar Games',
+    genero: ['Ação', 'Aventura'],
+    plataformas: ['PlayStation 3', 'PlayStation 4', 'Xbox One'],
+    avaliacoes: [4.0, 5.0, 4.9],
+    DLC: [
+      { nome: 'Bottom Dollar Bounties', preco: 29.99 }
+    ]
+  },
+  {
+    _id: 3,
+    titulo: 'Valorant',
+    desenvolvedora: 'Riot Games',
+    genero: ['Ação', 'FPS'],
+    plataformas: ['PlayStation 5', 'Xbox Series X', 'Windows'],
+    avaliacoes: [3.6, 4.3, 2.0],
+    DLC: [
+      { nome: 'Pontos VALORANT', preco: 'gratis' }
+    ]
+  },
+  {
+    _id: 4,
+    titulo: 'Roblox',
+    desenvolvedora: 'Roblox Corporation',
+    genero: ['Simulação', 'Mundo Virtual'],
+    plataformas: ['iOS', 'Xbox One', 'Android'],
+    avaliacoes: [5.0, 4.9, 4.8],
+    DLC: [
+      { nome: 'Virtual Nomad Bundle', preco: 'gratis' }
+    ]
+  }
+])
+
+
+db.jogos.find({},{titulo: 1})
+
+db.jogos.find({},{_id: 0, titulo: 1, desenvolvedora: 1})
+
