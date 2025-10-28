@@ -27,7 +27,7 @@ db.jogos.insertMany([
     _id: 3,
     titulo: 'Valorant',
     desenvolvedora: 'Riot Games',
-    genero: ['Ação', 'FPS'],
+    genero: ['Ação', 'Aventura'],
     plataformas: ['PlayStation 5', 'Xbox Series X', 'Windows'],
     avaliacoes: [3.6, 4.3, 2.0],
     DLC: [
@@ -72,4 +72,34 @@ db.jogos.updateOne(
 )
 db.jogos.find({ _id: 1 })
 
+
+db.jogos.updateOne(
+  { titulo: "GTA 5" },
+  { $set: { "genero.1": "Corrida" } }
+)
+db.jogos.find({ _id: 2 })
+
+db.jogos.updateOne(
+  {_id: 2},
+  {$pull: { plataformas: "Xbox One"}}
+)
+db.jogos.find({ _id: 2 })
+
+
+db.jogos.updateOne(
+  { titulo: "GTA 5" },
+  { $pop: { avaliacoes: 1 } }
+)
+db.jogos.find({ _id: 2 })
+
+
+db.jogos.find({})
+
+db.jogos.find(
+  { titulo: "Roblox", plataformas: "Android" }
+)
+
+db.jogos.find({ avaliacoes: { $gt: 4.7} })
+
+db.jogos.find({ "DLC.nome": "Pontos VALORANT"})
 
